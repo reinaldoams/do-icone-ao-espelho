@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Do Ícone ao Espelho: Catálogo de Curadoria</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Josefin+Sans:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --fundo: #C1A57B;
+    --card: #F5F1E3;
+    --texto: #4A3728;
+    --texto-suave: #6B5344;
+  }
+
+  @page { size: 29.7cm 21cm landscape; margin: 0.8cm 1cm; }
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Josefin Sans', Arial, sans-serif;
+    color: var(--texto);
+    background: var(--fundo);
+  }
+
+  .slide {
+    page-break-after: always;
+    page-break-inside: avoid;
+    width: 27.7cm;
+    height: 19.4cm;
+    max-height: 19.4cm;
+    overflow: hidden;
+    background: var(--fundo);
+    padding: 1cm 1.2cm;
+    text-align: left;
+  }
+  .slide:last-child { page-break-after: auto; }
+
+  /* tipografia */
+  .titulo-serif {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 700;
+    color: var(--texto);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-align: left;
+  }
+
+  /* OBRA: imagem esquerda + texto direita */
+  .obra-layout {
+    width: 100%;
+    overflow: hidden;
+  }
+  .obra-layout::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  .obra-esq {
+    float: left;
+    width: 40%;
+    text-align: left;
+    padding-right: 0.8cm;
+  }
+  .obra-dir {
+    float: left;
+    width: 60%;
+    text-align: left;
+    padding-top: 0.2cm;
+  }
+  .img-box {
+    background: var(--card);
+    padding: 0.4cm;
+    display: inline-block;
+    text-align: left;
+  }
+  .img-box img {
+    display: block;
+    max-width: 10cm;
+    max-height: 13.5cm;
+    object-fit: contain;
+  }
+  .obra-dir .titulo {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 17pt;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--texto);
+    margin: 0 0 0.6cm;
+    line-height: 1.25;
+    text-align: left;
+    border-bottom: 1px solid rgba(74,55,40,0.25);
+    padding-bottom: 0.35cm;
+  }
+  .obra-dir .meta {
+    font-size: 9.5pt;
+    line-height: 1.7;
+    color: var(--texto);
+    margin-bottom: 0.7cm;
+    text-align: left;
+  }
+  .obra-dir .meta strong {
+    font-weight: 400;
+    color: var(--texto-suave);
+    text-transform: uppercase;
+    font-size: 8pt;
+    letter-spacing: 0.06em;
+  }
+  .obra-dir .just {
+    font-size: 10pt;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.55;
+    color: var(--texto-suave);
+    margin: 0;
+    text-align: left;
+    padding-left: 0.5cm;
+    border-left: 2px solid var(--texto-suave);
+  }
+
+  /* SALA */
+  .sala-box {
+    background: var(--card);
+    padding: 1cm 1.2cm;
+    max-width: 16cm;
+    text-align: left;
+  }
+  .sala-box .num {
+    font-size: 8pt;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--texto-suave);
+    margin-bottom: 0.4cm;
+    text-align: left;
+  }
+  .sala-box h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 22pt;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .sala-box .sub {
+    font-size: 11pt;
+    font-weight: 300;
+    text-transform: none;
+    letter-spacing: 0.02em;
+    display: block;
+    margin-top: 0.3cm;
+    color: var(--texto-suave);
+  }
+  .sala-desc {
+    margin-top: 0.8cm;
+    max-width: 18cm;
+    font-size: 10pt;
+    font-style: italic;
+    color: var(--texto-suave);
+    text-align: left;
+  }
+
+  /* CAPA */
+  .capa-box {
+    background: var(--card);
+    padding: 1.2cm 1.4cm;
+    max-width: 18cm;
+    text-align: left;
+    margin-top: 1.5cm;
+  }
+  .capa-box .periodo {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 32pt;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.5cm;
+    text-align: left;
+  }
+  .capa-box h1 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 20pt;
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 0;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .capa-box .sub {
+    font-size: 10pt;
+    font-weight: 300;
+    margin-top: 0.7cm;
+    color: var(--texto-suave);
+    text-align: left;
+  }
+  .capa-box .museu {
+    font-size: 8pt;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-top: 0.8cm;
+    color: var(--texto-suave);
+    text-align: left;
+  }
+
+  /* TEXTO */
+  .texto-box {
+    background: var(--card);
+    padding: 0.9cm 1.1cm;
+    max-width: 24cm;
+    text-align: left;
+  }
+  .texto-box h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 16pt;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0 0 0.15cm;
+    text-align: left;
+  }
+  .texto-box .subtitulo {
+    font-size: 8pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--texto-suave);
+    margin-bottom: 0.7cm;
+    text-align: left;
+  }
+  .texto-box p {
+    font-size: 10pt;
+    font-weight: 300;
+    line-height: 1.55;
+    text-align: justify;
+    margin: 0 0 0.5em;
+  }
+
+  /* FICHA */
+  .ficha-box {
+    background: var(--card);
+    padding: 1cm 1.2cm;
+    max-width: 14cm;
+    text-align: left;
+    margin-top: 2cm;
+  }
+  .ficha-box h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 14pt;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0 0 0.5cm;
+    text-align: left;
+  }
+  .ficha-box p {
+    font-size: 9.5pt;
+    margin: 0.2em 0;
+    text-align: left;
+  }
+</style>
+</head>
+<body>
+
+<!-- CAPA -->
+<div class="slide capa">
+  <div class="capa-box">
+    <div class="periodo">XIII-XVIII</div>
+    <h1>Do Ícone ao Espelho:<br>Corpo, Espaço e Mundo na Europa Medieval e Moderna</h1>
+    <p class="sub">Uma exposição imaginária no Museu de Réplicas de Vila Velha, ES</p>
+    <p class="museu">Museu de Réplicas · Vila Velha</p>
+  </div>
+</div>
+
+<!-- APRESENTAÇÃO -->
+<div class="slide texto">
+  <div class="texto-box">
+    <h2>A Exposição</h2>
+    <div class="subtitulo">Apresentação curatorial</div>
+    <p>Entre o século XIII e o século XVIII, a arte europeia atravessou uma das transformações mais profundas de sua história: o olhar deixou de ser predominantemente teológico e simbólico para tornar-se progressivamente espacial, corporal e mundano. <em>Do Ícone ao Espelho</em> propõe um percurso imaginário por esse processo, articulando obras medievais e produções da Idade Moderna (Renascimento, Maneirismo, Barroco e Rococó) em um diálogo visual contínuo.</p>
+    <p>A proposta parte da ideia de que medieval e moderno não se opõem como eras fechadas, mas se entrelaçam. A arte gótica e o trecento italiano já anunciam a preocupação com o corpo humano e com o espaço pictórico; o Renascimento sistematiza a perspectiva e a medida do homem; o Maneirismo tensiona esses cânones; o Barroco dramatiza luz, movimento e poder; o Rococó refina o prazer e o ornamento.</p>
+    <p>O recorte temático abrange produções entre aproximadamente 1300 e 1770, privilegiando obras que evidenciem a transição do sagrado para o profano, da bidimensionalidade hierárquica para a profundidade ilusionista, e da função devocional para a afirmação estética e social da imagem.</p>
+  </div>
+</div>
+
+<!-- CURADORIA -->
+<div class="slide texto">
+  <div class="texto-box">
+    <h2>Curadoria</h2>
+    <div class="subtitulo">Critérios e narrativa expositiva</div>
+    <p>Esta curadoria organiza dezoito obras em cinco salas temáticas, distribuídas de forma equilibrada entre o medieval e os quatro momentos da Idade Moderna. Os critérios de seleção combinam representatividade histórica, qualidade iconográfica das peças e capacidade de cada obra dialogar com as demais no percurso expositivo.</p>
+    <p>Priorizou-se: (1) obras-canônicas que marquem rupturas ou continuidades estéticas; (2) diversidade de suportes (pintura, escultura, manuscrito iluminado); (3) presença de autores e escolas distintas; (4) temas recorrentes (corpo, luz, espaço, poder, prazer) que permitam leituras comparativas entre salas.</p>
+    <p>A história que esta exposição deseja contar é a <strong>invenção progressiva do olhar moderno</strong>: de um mundo ordenado pelo sagrado e pela eternidade para um mundo medido pelo homem, pela natureza, pelo teatro da cena barroca e, finalmente, pelo gosto refinado das elites do século XVIII.</p>
+  </div>
+</div>
+
+<!-- SALA 1 -->
+<div class="slide sala">
+  <div class="sala-box">
+    <div class="num">Sala I</div>
+    <h2>O Olhar do Sagrado<span class="sub">Arte Medieval e a Tradição do Ícone</span></h2>
+  </div>
+  <p class="sala-desc">Do gesto simbólico à primeira humanização do corpo sagrado.</p>
+</div>
+
+<div class="slide obra">
+  <div class="obra-layout">
+    <div class="obra-esq"><div class="img-box"><img src="IMG:giotto.jpg" alt=""></div></div>
+    <div class="obra-dir">
+      <div class="titulo">Lamentação sobre Cristo Morto</div>
+      <div class="meta"><strong>Autor:</strong> Giotto di Bondone<br><strong>Data:</strong> c. 1305<br><strong>Dimensão:</strong> 200 × 185 cm<br><strong>Origem:</strong> Padova, Itália<br><strong>Acervo:</strong> Capela dos Scrovegni (réplica)</div>
+      <p class="just">Giotto inaugura a transição do medieval ao proto-renascentista ao humanizar o gesto e o peso corporal das figuras. A obra abre a exposição mostrando como o sagrado já começa a ser vivido em termos terrenos.</p>
+    </div>
+  </div>
+</div>
+
+<div class="slide obra">
+  <div class="obra-layout">
+    <div class="obra-esq"><div class="img-box"><img src="IMG:duccio.jpg" alt=""></div></div>
+    <div class="obra-dir">
+      <div class="titulo">Maestà (face frontal)</div>
+      <div class="meta"><strong>Autor:</strong> Duccio di Buoninsegna<br><strong>Data:</strong> 1308-1311<br><strong>Dimensão:</strong> 214 × 412 cm<br><strong>Origem:</strong> Siena, Itália<br><strong>Acervo:</strong> Museo dell'Opera del Duomo, Siena (réplica)</div>
+      <p class="just">A Maestà sintetiza a tradição íconica medieval: fundo dourado, hierarquia sagrada e função litúrgica. Ancora o setor na estética do Trecento senense.</p>
+    </div>
+  </div>
+</div>
+
+<div class="slide obra">
+  <div class="obra-layout">
+    <div class="obra-esq"><div class="img-box"><img src="IMG:limbourg.jpg" alt=""></div></div>
+    <div class="obra-dir">
+      <div class="titulo">As Muito Ricas Horas do Duque de Berry: O Jardim dos Amores</div>
+      <div class="meta"><strong>Autores:</strong> Herman, Paul e Jean de Limbourg<br><strong>Data:</strong> c. 1412-1416<br><strong>Dimensão:</strong> 29 × 21 cm<br><strong>Origem:</strong> França<br><strong>Acervo:</strong> Musée Condé, Chantilly (réplica)</div>
+      <p class="just">O manuscrito iluminado une devoção, calendário e refinamento cortesão. Revela o gótico internacional em sua fase tardia.</p>
+    </div>
+  </div>
+</div>
+
+<div class="slide obra">
+  <div class="obra-layout">
+    <div class="obra-esq"><div class="img-box"><img src="IMG:van_eyck.jpg" alt=""></div></div>
+    <div class="obra-dir">
+      <div class="titulo">Adoração do Cordeiro Místico (detalhe)</div>
+      <div class="meta"><strong>Autor:</strong> Jan van Eyck<br><strong>Data:</strong> 1432<br><strong>Dimensão:</strong> detalhe ≈ 100 × 80 cm<br><strong>Origem:</strong> Ghent, Bélgica<br><strong>Acervo:</strong> Catedral de São Bavão (réplica)</div>
+      <p class="just">Van Eyck encerra a sala medieval com o virtuosismo flamengo: óleo, minúcia e profundidade espacial, passagem direta ao Renascimento.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SALA 2 -->
+<div class="slide sala">
+  <div class="sala-box">
+    <div class="num">Sala II</div>
+    <h2>A Medida do Homem<span class="sub">Renascimento e a Invenção da Perspectiva</span></h2>
+  </div>
+  <p class="sala-desc">A perspectiva, o corpo clássico e a reinvenção do saber humano.</p>
+</div>
+
+<div class="slide obra">
+  <div class="obra-layout">
+    <div class="obra-esq"><div class="img-box"><img src="IMG:mona_lisa.jpg" alt=""></div></div>
+    <div class="obra-dir">
+      <div class="titulo">Mona Lisa (La Gioconda)</div>
+      <div class="meta"><strong>Autor:</strong> Leonardo da Vinci<br><strong>Data:</strong> c. 1503-1519<br><strong>Dimensão:</strong> 77 × 53 cm<br><strong>Origem:</strong> Florença / França<br><strong>Acervo:</strong> Museu do Louvre (réplica)</div>
+      <p class="just">Leonardo sintetiza o ideal renascentista: sfumato, psicologia do retrato e paisagem atmosférica.</p>
+    </div>
+  </div>
+</div>
+
+<div class="slide obra">
+  <div class="obra-layout">
+    <div class="obra-esq"><div class="img-box"><img src="IMG:david.jpg" alt=""></div></div>
+    <div class="obra-dir">
+      <div class="titulo">David</div>
+      <div class="meta"><strong>Autor:</strong> Michelangelo Buonarroti<br><strong>Data:</strong> 1501-1504<br><strong>Dimensão:</strong> 517 cm (altura)<br><strong>Origem:</strong> Florença, Itália<br><strong>Acervo:</strong> Galleria dell'Accademia (réplica)</div>
+      <p class="just">O David monumentaliza o corpo heroico como medida do mundo, diálogo entre antiguidade clássica e orgulho cívico florentino.</p>
+    </div>
+  </div>
+</div>
+
+<div class="slide obra">
+  <div class="obra-layout">
+    <div class="obra-esq"><div class="img-box"><img src="IMG:atenas.jpg" alt=""></div></div>
+    <div class="obra-dir">
+      <div class="titulo">A Escola de Atenas</div>
+      <div class="meta"><strong>Autor:</strong> Raffaello Sanzio (Rafael)<br><strong>Data:</strong> 1509-1511<br><strong>Dimensão:</strong> 500 × 770 cm<br><strong>Origem:</strong> Roma, Itália<br><strong>Acervo:</strong> Stanza della Segnatura, Vaticano (réplica)</div>
+      <p class="just">Rafael organiza o saber filosófico em espaço perspectivo perfeito, manifesto visual da sala.</p>
+    </div>
+  </div>
+</div>
+
+<div class="slide obra">
+  <div class="obra-layout">
+    <div class="obra-esq"><div class="img-box"><img src="IMG:venus.jpg" alt=""></div></div>
+    <div class="obra-dir">
+      <div class="titulo">O Nascimento de Vênus</div>
+      <div class="meta"><strong>Autor:</strong> Sandro Botticelli<br><strong>Data:</strong> c. 1485<br><strong>Dimensão:</strong> 172,5 × 278,5 cm<br><strong>Origem:</strong> Florença, Itália<br><strong>Acervo:</strong> Galleria degli Uffizi (réplica)</div>
+      <p class="just">Botticelli une mitologia pagã, linha elegante e sensibilidade poética neoplatônica.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SALA 3 -->
+<div class="slide sala">
+  <div class="sala-box">
+    <div class="num">Sala III</div>
+    <h2>O Corpo em Tensão<span class="sub">Maneirismo e a Crise da Forma</span></h2>
+  </div>
+  <p class="sala-desc">Corpos alongados, cores intensas e o espírito em vertigem.</p>
+</div>
+
+<div class="slide obra">
+  <div class="obra-layout">
+    <div class="obra-esq"><div class="img-box"><img src="IMG:pontormo.jpg" alt=""></div></div>
+    <div class="obra-dir">
+      <div class="titulo">Deposição da Cruz</div>
+      <div class="meta"><strong>Autor:</strong> Jacopo Pontormo<br><strong>Data:</strong> 1525-1528<br><strong>Dimensão:</strong> 313 × 192 cm<br><strong>Origem:</strong> Florença, Itália<br><strong>Acervo:</strong> Santa Felicita (réplica)</div>
+      <p class="just">Pontormo dissolve a estabilidade renascentista em corpos alongados, cores ácidas e composição flutuante.</p>
+    </div>
+  </div>
+</div>
+
+<div class="slide obra">
+  <div class="obra-layout">
+    <div class="obra-esq"><div class="img-box"><img src="IMG:parmigianino.jpg" alt=""></div></div>
+    <div class="obra-dir">
+      <div class="titulo">Madona do Pescoço Longo</div>
+      <div class="meta"><strong>Autor:</strong> Parmigianino (Francesco Mazzola)<br><strong>Data:</strong> c. 1534-1540<br><strong>Dimensão:</strong> 216 × 132 cm<br><strong>Origem:</strong> Parma, Itália<br><strong>Acervo:</strong> Galleria degli Uffizi (réplica)</div>
+      <p class="just">A figura elongada e o espaço ambíguo subvertem proporções clássicas, beleza que tensiona o cânone.</p>
+    </div>
+  </div>
+</div>
+
+<div class="slide obra">
+  <div class="obra-layout">
+    <div class="obra-esq"><div class="img-box"><img src="IMG:el_greco.jpg" alt=""></div></div>
+    <div class="obra-dir">
+      <div class="titulo">O Enterro do Conde de Orgaz</div>
+      <div class="meta"><strong>Autor:</strong> El Greco (Domenikos Theotokopoulos)<br><strong>Data:</strong> 1586-1588<br><strong>Dimensão:</strong> 480 × 360 cm<br><strong>Origem:</strong> Toledo, Espanha<br><strong>Acervo:</strong> Igreja de Santo Tomé (réplica)</div>
+      <p class="just">El Greco une céu espiritual e terra cerimonial, ponte entre a crise da forma e o teatralismo barroco.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SALA 4 -->
+<div class="slide sala">
+  <div class="sala-box">
+    <div class="num">Sala IV</div>
+    <h2>Luz, Teatro e Poder<span class="sub">O Espírito Barroco</span></h2>
+  </div>
+  <p class="sala-desc">Chiaroscuro, drama espiritual e a cena como espetáculo.</p>
+</div>
+
+<div class="slide obra">
+  <div class="obra-layout">
+    <div class="obra-esq"><div class="img-box"><img src="IMG:caravaggio.jpg" alt=""></div></div>
+    <div class="obra-dir">
+      <div class="titulo">A Vocação de São Mateus</div>
+      <div class="meta"><strong>Autor:</strong> Michelangelo Merisi da Caravaggio<br><strong>Data:</strong> 1599-1600<br><strong>Dimensão:</strong> 322 × 340 cm<br><strong>Origem:</strong> Roma, Itália<br><strong>Acervo:</strong> San Luigi dei Francesi (réplica)</div>
+      <p class="just">O chiaroscuro caravaggesco transforma a cena bíblica em drama iluminado por raio divino.</p>
+    </div>
+  </div>
+</div>
+
+<div class="slide obra">
+  <div class="obra-layout">
+    <div class="obra-esq"><div class="img-box"><img src="IMG:bernini.jpg" alt=""></div></div>
+    <div class="obra-dir">
+      <div class="titulo">Êxtase de Santa Teresa</div>
+      <div class="meta"><strong>Autor:</strong> Gian Lorenzo Bernini<br><strong>Data:</strong> 1647-1652<br><strong>Dimensão:</strong> grupo escultórico ≈ 350 cm<br><strong>Origem:</strong> Roma, Itália<br><strong>Acervo:</strong> Santa Maria della Vittoria (réplica)</div>
+      <p class="just">Bernini funde escultura, arquitetura e luz em teatro espiritual, barroco como experiência total.</p>
+    </div>
+  </div>
+</div>
+
+<div class="slide obra">
+  <div class="obra-layout">
+    <div class="obra-esq"><div class="img-box"><img src="IMG:rembrandt.jpg" alt=""></div></div>
+    <div class="obra-dir">
+      <div class="titulo">A Ronda de Noite</div>
+      <div class="meta"><strong>Autor:</strong> Rembrandt van Rijn<br><strong>Data:</strong> 1642<br><strong>Dimensão:</strong> 363 × 437 cm<br><strong>Origem:</strong> Amsterdã, Países Baixos<br><strong>Acervo:</strong> Rijksmuseum (réplica)</div>
+      <p class="just">Rembrandt barroquiza o retrato coletivo com luz dinâmica e movimento burguês.</p>
+    </div>
+  </div>
+</div>
+
+<div class="slide obra">
+  <div class="obra-layout">
+    <div class="obra-esq"><div class="img-box"><img src="IMG:meninas.jpg" alt=""></div></div>
+    <div class="obra-dir">
+      <div class="titulo">As Meninas</div>
+      <div class="meta"><strong>Autor:</strong> Diego Velázquez<br><strong>Data:</strong> 1656<br><strong>Dimensão:</strong> 318 × 276 cm<br><strong>Origem:</strong> Madrid, Espanha<br><strong>Acervo:</strong> Museo del Prado (réplica)</div>
+      <p class="just">Velázquez desafia o olhar ao fundir retrato, cena de corte e metapintura.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SALA 5 -->
+<div class="slide sala">
+  <div class="sala-box">
+    <div class="num">Sala V</div>
+    <h2>Prazer, Ornamento e Delicadeza<span class="sub">O Mundo Rococó</span></h2>
+  </div>
+  <p class="sala-desc">Fête galante, sedução e o refinamento do gosto cortesão.</p>
+</div>
+
+<div class="slide obra">
+  <div class="obra-layout">
+    <div class="obra-esq"><div class="img-box"><img src="IMG:watteau.jpg" alt=""></div></div>
+    <div class="obra-dir">
+      <div class="titulo">Peregrinação à Ilha de Citera</div>
+      <div class="meta"><strong>Autor:</strong> Jean-Antoine Watteau<br><strong>Data:</strong> 1717<br><strong>Dimensão:</strong> 129 × 194 cm<br><strong>Origem:</strong> Paris, França<br><strong>Acervo:</strong> Musée du Louvre (réplica)</div>
+      <p class="just">Watteau inventa a fête galante: amor, viagem e melancolia em paisagem idílica.</p>
+    </div>
+  </div>
+</div>
+
+<div class="slide obra">
+  <div class="obra-layout">
+    <div class="obra-esq"><div class="img-box"><img src="IMG:fragonard.jpg" alt=""></div></div>
+    <div class="obra-dir">
+      <div class="titulo">O Balanço</div>
+      <div class="meta"><strong>Autor:</strong> Jean-Honoré Fragonard<br><strong>Data:</strong> c. 1767<br><strong>Dimensão:</strong> 81 × 64 cm<br><strong>Origem:</strong> Paris, França<br><strong>Acervo:</strong> The Wallace Collection, Londres (réplica)</div>
+      <p class="just">Fragonard condensa erotismo, jogo e ornamento em cena de jardim privado.</p>
+    </div>
+  </div>
+</div>
+
+<div class="slide obra">
+  <div class="obra-layout">
+    <div class="obra-esq"><div class="img-box"><img src="IMG:boucher.jpg" alt=""></div></div>
+    <div class="obra-dir">
+      <div class="titulo">Diana Saindo do Banho</div>
+      <div class="meta"><strong>Autor:</strong> François Boucher<br><strong>Data:</strong> 1742<br><strong>Dimensão:</strong> 73 × 56 cm<br><strong>Origem:</strong> Paris, França<br><strong>Acervo:</strong> Musée du Louvre (réplica)</div>
+      <p class="just">Boucher encerra a exposição: do ícone sagrado ao espelho do prazer estético no século XVIII.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MEMORIAL -->
+<div class="slide texto">
+  <div class="texto-box">
+    <h2>Memorial da Curadoria</h2>
+    <div class="subtitulo">Síntese crítica do percurso</div>
+    <p><em>Do Ícone ao Espelho</em> propõe que a história da arte europeia entre os séculos XIII e XVIII pode ser lida como uma longa negociação entre transcendência e imanência (HAUSER, 1986). O Renascimento sistematiza a virada ao colocar o homem como medida de todas as coisas (GOMBRICH, 1995). O Maneirismo tensiona o cânone renascentista (SHEARMAN, 1967). O Barroco responde com teatro e luz (FARTHING, 2010). O Rococó desloca o centro para o prazer cortesão (CROW, 2006).</p>
+    <p>Reunidas no Museu de Réplicas de Vila Velha, essas obras convidam o visitante a percorrer cinco séculos de transformação do olhar, do ícone que aponta para o além ao espelho que devolve ao espectador um mundo habitável, sensível e prazeroso.</p>
+  </div>
+</div>
+
+<!-- REFERÊNCIAS -->
+<div class="slide texto">
+  <div class="texto-box">
+    <h2>Referências Bibliográficas</h2>
+    <div class="subtitulo">Bibliografia</div>
+    <p>CROW, Thomas E. <em>A História da Arte Moderna.</em> São Paulo: Martins Fontes, 2006.</p>
+    <p>FARTHING, Stephen. <em>Tudo sobre arte.</em> Rio de Janeiro: Sextante, 2010.</p>
+    <p>GOMBRICH, E. H. <em>A História da Arte.</em> Rio de Janeiro: LTC, 1995.</p>
+    <p>HAUSER, Arnold. <em>História Social da Arte e da Literatura.</em> São Paulo: Martins Fontes, 1986.</p>
+    <p>SHEARMAN, John. <em>Manierismo.</em> São Paulo: Perspectiva, 1967.</p>
+  </div>
+</div>
+
+<!-- FICHA -->
+<div class="slide ficha">
+  <div class="ficha-box">
+    <h2>Estética e História da Arte 2026-1</h2>
+    <p><strong>AOP-02: Curadoria Visual Comentada</strong></p>
+    <p>Prof. Luiz Marcello Gomes Ribeiro</p>
+    <p style="margin-top: 1em;"><strong>Aluno(a):</strong> Letícia Damasio Santoro</p>
+    <p style="margin-top: 1.2em; font-size: 8pt; letter-spacing: 0.15em;">FICHA TÉCNICA</p>
+  </div>
+</div>
+
+</body>
+</html>

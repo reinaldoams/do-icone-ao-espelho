@@ -1,0 +1,463 @@
+:root {
+  --ouro: #C9A84C;
+  --ouro-escuro: #8B6914;
+  --bege: #F5F1E3;
+  --bege-escuro: #C1A57B;
+  --borgonha: #3D1F1A;
+  --borgonha-claro: #5C2E28;
+  --texto: #2C1810;
+  --texto-suave: #6B5344;
+  --sombra: rgba(20, 10, 5, 0.45);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Josefin Sans', system-ui, sans-serif;
+  color: var(--texto);
+  background: var(--borgonha);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* textura de fundo */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(201,168,76,0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 100%, rgba(193,165,123,0.1) 0%, transparent 45%),
+    repeating-linear-gradient(90deg, transparent, transparent 80px, rgba(0,0,0,0.03) 80px, rgba(0,0,0,0.03) 81px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.wrap { position: relative; z-index: 1; }
+
+h1, h2, h3, .serif {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+/* NAV */
+nav.topo {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 2rem;
+  background: rgba(61,31,26,0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(201,168,76,0.3);
+}
+nav.topo .logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--bege);
+  text-decoration: none;
+}
+nav.topo a.link-nav {
+  color: var(--ouro);
+  text-decoration: none;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-left: 1.5rem;
+  transition: color 0.2s;
+}
+nav.topo a.link-nav:hover { color: var(--bege); }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 6rem 2rem 4rem;
+  background: linear-gradient(160deg, var(--borgonha) 0%, var(--borgonha-claro) 40%, #4a2f28 100%);
+}
+.hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  width: 100%;
+}
+.hero-text .periodo {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  color: var(--ouro);
+  line-height: 1;
+}
+.hero-text h1 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 600;
+  color: var(--bege);
+  line-height: 1.2;
+  margin: 1rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.hero-text .sub {
+  font-size: 1rem;
+  color: rgba(245,241,227,0.75);
+  font-style: italic;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+.hero-text .museu {
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--ouro);
+}
+.hero-visual {
+  background: var(--bege);
+  padding: 1.5rem;
+  box-shadow: 0 20px 60px var(--sombra);
+  border: 2px solid var(--ouro);
+}
+.hero-visual img {
+  width: 100%;
+  display: block;
+  max-height: 380px;
+  object-fit: cover;
+}
+.hero-visual .leg {
+  font-size: 0.75rem;
+  color: var(--texto-suave);
+  margin-top: 0.8rem;
+  text-align: left;
+  font-style: italic;
+}
+.btn-scroll {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.75rem 1.8rem;
+  background: transparent;
+  border: 1px solid var(--ouro);
+  color: var(--ouro);
+  text-decoration: none;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+.btn-scroll:hover {
+  background: var(--ouro);
+  color: var(--borgonha);
+}
+
+/* SEÇÕES */
+section {
+  padding: 5rem 2rem;
+}
+section .inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+section.bege-fundo { background: var(--bege-escuro); }
+section.creme-fundo { background: var(--bege); }
+
+.sec-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ouro-escuro);
+  margin-bottom: 0.5rem;
+}
+section h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--borgonha);
+  margin-bottom: 1.5rem;
+}
+section p {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.75;
+  margin-bottom: 1rem;
+  text-align: justify;
+  color: var(--texto);
+}
+section strong { font-weight: 500; color: var(--borgonha); }
+section em { font-style: italic; color: var(--borgonha-claro); }
+
+/* CORREDOR DAS PORTAS */
+.corredor {
+  padding: 5rem 2rem 6rem;
+  background: linear-gradient(180deg, #2a1512 0%, var(--borgonha) 50%, #1a0e0c 100%);
+  text-align: center;
+}
+.corredor h2 {
+  color: var(--bege);
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+.corredor .intro-corredor {
+  color: rgba(245,241,227,0.6);
+  font-size: 0.9rem;
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  line-height: 1.6;
+}
+.portas-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* PORTA */
+.porta-link {
+  text-decoration: none;
+  display: block;
+  perspective: 800px;
+}
+.porta {
+  width: 160px;
+  height: 260px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+}
+.porta-link:hover .porta { transform: rotateY(-28deg); }
+.porta-link:hover .porta-abrir { opacity: 1; }
+
+.porta-moldura {
+  position: absolute;
+  inset: -8px -4px -4px -4px;
+  background: linear-gradient(145deg, #6B4423, #3D2914);
+  border: 3px solid var(--ouro);
+  box-shadow: 0 12px 40px var(--sombra), inset 0 0 20px rgba(0,0,0,0.3);
+}
+.porta-folha {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #4A2F2A 0%, #6B3A30 40%, #5C3028 100%);
+  border: 2px solid var(--ouro-escuro);
+  transform-origin: left center;
+  transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  box-shadow: inset -8px 0 20px rgba(0,0,0,0.4);
+}
+.porta-link:hover .porta-folha { transform: rotateY(-55deg); }
+
+.porta-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem;
+  color: var(--ouro);
+  font-weight: 300;
+  line-height: 1;
+}
+.porta-nome {
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bege);
+  text-align: center;
+  margin-top: 0.8rem;
+  line-height: 1.4;
+}
+.porta-maçaneta {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  background: var(--ouro);
+  border-radius: 50%;
+  box-shadow: 2px 0 4px rgba(0,0,0,0.5);
+  transform: translateY(-50%);
+}
+.porta-abrir {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(255,220,150,0.25) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+.porta-label-bottom {
+  margin-top: 1rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ouro);
+}
+
+/* PÁGINA SALA */
+.sala-header {
+  padding: 7rem 2rem 3rem;
+  background: linear-gradient(135deg, var(--borgonha), var(--borgonha-claro));
+  text-align: left;
+}
+.sala-header .inner { max-width: 900px; margin: 0 auto; }
+.sala-header .num {
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--ouro);
+  margin-bottom: 0.5rem;
+}
+.sala-header h1 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  color: var(--bege);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+}
+.sala-header .sub {
+  font-size: 1.1rem;
+  color: rgba(245,241,227,0.7);
+  font-style: italic;
+  margin-top: 0.8rem;
+  font-weight: 300;
+}
+.sala-header .desc {
+  font-size: 0.95rem;
+  color: rgba(245,241,227,0.55);
+  margin-top: 1rem;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+/* OBRAS */
+.obras-lista { padding: 3rem 2rem 5rem; background: var(--bege); }
+.obra-card {
+  max-width: 1000px;
+  margin: 0 auto 3rem;
+  display: grid;
+  grid-template-columns: 38% 1fr;
+  gap: 2rem;
+  align-items: start;
+  text-align: left;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(74,55,40,0.15);
+}
+.obra-card:last-child { border-bottom: none; margin-bottom: 0; }
+.obra-img-wrap {
+  background: var(--bege-escuro);
+  padding: 0.8rem;
+  border: 1px solid rgba(139,105,20,0.3);
+}
+.obra-img-wrap img {
+  width: 100%;
+  display: block;
+  max-height: 320px;
+  object-fit: contain;
+}
+.obra-info h3 {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--borgonha);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--ouro);
+}
+.obra-meta {
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: var(--texto-suave);
+  margin-bottom: 1rem;
+}
+.obra-meta span { color: var(--borgonha); font-weight: 500; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.05em; }
+.obra-just {
+  font-size: 0.95rem;
+  font-style: italic;
+  line-height: 1.65;
+  color: var(--texto);
+  padding-left: 1rem;
+  border-left: 3px solid var(--ouro);
+}
+
+/* PORTA PRÓXIMA SALA */
+.proxima-sala {
+  padding: 4rem 2rem;
+  background: linear-gradient(180deg, var(--bege) 0%, var(--bege-escuro) 100%);
+  text-align: center;
+}
+.proxima-sala p {
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+  margin-bottom: 2rem;
+}
+.porta-grande-link { text-decoration: none; display: inline-block; perspective: 1000px; }
+.porta-grande {
+  width: 200px;
+  height: 320px;
+  position: relative;
+  margin: 0 auto;
+}
+.porta-grande .porta-moldura { inset: -10px -6px -6px -6px; }
+.porta-grande .porta-folha { padding: 2rem 1rem; }
+.porta-grande .porta-num { font-size: 3rem; }
+.porta-grande-link:hover .porta-folha { transform: rotateY(-50deg); }
+.porta-grande-link:hover .porta { transform: rotateY(-15deg); }
+
+.nav-voltar {
+  display: inline-block;
+  margin-top: 2rem;
+  color: var(--borgonha);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-bottom: 1px solid var(--ouro);
+  padding-bottom: 2px;
+}
+.nav-voltar:hover { color: var(--ouro-escuro); }
+
+/* CONCLUSÃO */
+.refs-list { list-style: none; }
+.refs-list li {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin-bottom: 0.6rem;
+  color: var(--texto);
+}
+.ficha-box {
+  margin-top: 3rem;
+  padding: 2rem;
+  border: 1px solid var(--ouro);
+  background: rgba(255,255,255,0.4);
+  text-align: left;
+}
+.ficha-box p { text-align: left; margin-bottom: 0.4rem; }
+
+footer {
+  padding: 2rem;
+  text-align: center;
+  background: #1a0e0c;
+  color: rgba(245,241,227,0.4);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+}
+
+@media (max-width: 768px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .obra-card { grid-template-columns: 1fr; }
+  .portas-grid { gap: 1.5rem; }
+  .porta { width: 130px; height: 210px; }
+  nav.topo { padding: 0.6rem 1rem; }
+  nav.topo a.link-nav { margin-left: 0.8rem; font-size: 0.65rem; }
+}
