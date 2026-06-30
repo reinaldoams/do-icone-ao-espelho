@@ -1,0 +1,12 @@
+# Arquivos grandes / gerados localmente
+catalogo_slides_embed.html
+catalogo_embed.html
+
+# Imagens fonte (cópia de deploy está em docs/imagens_resized/)
+/imagens/
+/imagens_resized/
+/site/imagens_resized/
+
+# Python
+__pycache__/
+*.pyc
